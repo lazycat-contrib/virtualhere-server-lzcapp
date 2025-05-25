@@ -1,0 +1,25 @@
+lzc-sdk-version: "0.1"
+name: VirtualHere Server
+package: cloud.lazycat.app.virtualhere-server
+version: 4.7.8
+description: VirtualHere allows USB devices to be used remotely over a network just as if they were locally connected!
+homepage: https://www.virtualhere.com
+author: virtualhere
+application:
+  subdomain: virtualhere-server
+  background_task: true
+  usb_accel: true
+  public_path:
+    - /
+  routes:
+    - /=file:///lzcapp/pkg/content/help.html
+
+  ingress:
+    - protocol: tcp
+      port: 7575
+      service: virtualhere-server
+services:
+  virtualhere-server:
+    image: registry.lazycat.cloud/czyt/czyt/virtualhere-server:cf3a15920ec3751e
+    binds:
+      - /lzcapp/var/data:/data
