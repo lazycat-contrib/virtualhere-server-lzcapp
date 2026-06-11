@@ -1,0 +1,20 @@
+package: cloud.lazycat.app.virtualhere-server
+version: 4.8.7
+name: VirtualHere Server
+description: VirtualHere allows USB devices to be used remotely over a network just as if they were locally connected!
+min_os_version: 1.5.0
+homepage: https://www.virtualhere.com
+author: virtualhere
+
+locales:
+  zh:
+    name: "VirtualHere USB 服务器"
+    description: "VirtualHere 让 USB 设备通过网络远程使用，就像本地连接一样！"
+  en:
+    name: "VirtualHere Server"
+    description: "VirtualHere allows USB devices to be used remotely over a network just as if they were locally connected!"
+
+permissions:
+  required:
+    - net.internet
+    - device.usb
