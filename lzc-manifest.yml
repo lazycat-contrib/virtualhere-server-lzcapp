@@ -11,10 +11,9 @@ application:
     - protocol: tcp
       port: 7575
       service: virtualhere-server
-
 services:
   virtualhere-server:
     # upstream: czyt/virtualhere-server:4.8.7
-    image: czyt/virtualhere-server:4.8.7
+    image: registry.lazycat.cloud/czyt/czyt/virtualhere-server:e8446242a8606bd6
     binds:
       - /lzcapp/var/data:/data
