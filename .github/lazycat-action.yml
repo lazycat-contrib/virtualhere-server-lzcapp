@@ -1,0 +1,38 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: .lazycat-build/virtualhere-server.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: virtualhere-server
+build:
+  run_buildscript: false
+images:
+  # 上游有完整三段 SemVer tag（4.7.8/4.8.7），排除 latest/-amd64/-arm 后缀
+  - id: virtualhere-server
+    target: service
+    service: virtualhere-server
+    source: czyt/virtualhere-server
+    channel: stable
+    sort: semver
+    tag_regex: '^v?\d+\.\d+\.\d+$'
+    delivery:
+      mode: lazycat
+stores:
+  official:
+    enabled: true
+    skip_if_version_exists: true
+    changelog_locales: [zh, en]
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: VirtualHere Server
+    summary: "VirtualHere 让 USB 设备通过网络远程使用，就像本地连接一样！"
